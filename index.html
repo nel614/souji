@@ -9,15 +9,19 @@
 <body>
   <div class="container">
     <h1>掃除ミッション</h1>
-    <p>「今日の掃除場所」をガチャで決めよう！<br>結果のビフォーアフターを送ってプレゼントポイントを貯めよう！</p>
+    <p>「今日の掃除場所」をガチャで決めよう！<br>結果のビフォーアフターを送ってポイントを貯めよう！</p>
     
     <div class="slot-container">
-      <div class="slot" id="slot1">?</div>
+      <div class="slot spinning" id="slot1">?</div>
     </div>
     
     <button id="rollButton">ガチャを回す！</button>
     
-    <p id="result" class="hidden"></p>
+    <div id="result-container" class="hidden">
+      <p id="result"></p>
+      <div id="effect"></div>
+    </div>
+    
     <p id="counter">本日のガチャ状況：<span id="status">未挑戦</span></p>
   </div>
   <script src="script.js"></script>
