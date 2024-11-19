@@ -4,25 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>掃除ミッション</title>
+
+  <!-- Anime.jsを読み込む -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <!-- Three.jsを読み込む -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+
+  <!-- スタイルシート -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>掃除ミッション</h1>
-    <p>「今日の掃除場所」をガチャで決めよう！<br>結果のビフォーアフターを送ってポイントを貯めよう！</p>
-    
-    <div class="slot-container">
-      <div class="slot spinning" id="slot1">?</div>
-    </div>
-    
-    <button id="rollButton">ガチャを回す！</button>
-    
-    <div id="result-container" class="hidden">
-      <p id="result"></p>
-      <div id="effect"></div>
-    </div>
-    
-    <p id="counter">本日のガチャ状況：<span id="status">未挑戦</span></p>
+    <!-- 本文のコンテンツ -->
   </div>
   <script src="script.js"></script>
 </body>
