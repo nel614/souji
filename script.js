@@ -1,29 +1,14 @@
 const locations = [
-  "キッチン：コンロ",
-  "キッチン：シンク",
-  "キッチン：レンジフード",
-  "キッチン：冷蔵庫内",
-  "キッチン：キッチン棚",
-  "リビング：窓",
-  "リビング：カーテン",
-  "リビング：フローリング",
-  "リビング：テレビ台",
-  "リビング：ソファ下",
-  "バスルーム：浴槽",
-  "バスルーム：シャワーヘッド",
-  "バスルーム：排水溝",
-  "バスルーム：鏡",
-  "バスルーム：天井",
-  "トイレ：便器",
-  "トイレ：タンク",
-  "トイレ：床",
-  "トイレ：ペーパーホルダー周り",
-  "トイレ：ドアノブ",
-  "玄関：玄関ドア",
-  "玄関：下駄箱",
-  "玄関：たたき",
-  "玄関：靴",
-  "玄関：傘立て"
+  "キッチンのコンロ",
+  "キッチンのシンク",
+  "リビングの窓",
+  "リビングのカーテン",
+  "バスルームの浴槽",
+  "バスルームの鏡",
+  "トイレの便器",
+  "トイレの床",
+  "玄関のドア",
+  "玄関の下駄箱"
 ];
 
 let hasPlayedToday = false;
@@ -31,6 +16,8 @@ let hasPlayedToday = false;
 const rollButton = document.getElementById("rollButton");
 const resultText = document.getElementById("result");
 const statusText = document.getElementById("status");
+const resultContainer = document.getElementById("result-container");
+const slot = document.getElementById("slot1");
 
 function getRandomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
@@ -42,22 +29,18 @@ function rollSlots() {
     return;
   }
 
-  // ランダム結果を生成
-  const slot1 = getRandomItem(locations);
+  // スロットの仮アニメーション
+  slot.textContent = "回転中...";
+  setTimeout(() => {
+    const slotResult = getRandomItem(locations);
+    slot.textContent = slotResult;
 
-  // 結果をスロットに反映
-  document.getElementById("slot1").textContent = slot1;
-
-  // 結果を表示
-  resultText.innerHTML = `
-    今日の掃除ミッション：<br><strong>${slot1}</strong><br>
-    結果のビフォーアフターを送ってプレゼントポイントを貯めよう！
-  `;
-  resultText.classList.remove("hidden");
-
-  // 1日1回制限
-  hasPlayedToday = true;
-  statusText.textContent = "本日は挑戦済み";
+    // 結果表示とエフェクト
+    resultText.textContent = `今日の掃除ミッション：${slotResult}`;
+    resultContainer.classList.remove("hidden");
+    hasPlayedToday = true;
+    statusText.textContent = "本日は挑戦済み";
+  }, 2000);
 }
 
 rollButton.addEventListener("click", rollSlots);
