@@ -1,96 +1,76 @@
-// 掃除場所のリスト
-const locations = [
-  "キッチンのコンロ",
-  "キッチンのシンク",
-  "リビングの窓",
-  "リビングのカーテン",
-  "バスルームの浴槽",
-  "バスルームの鏡",
-  "トイレの便器",
-  "トイレの床",
-  "玄関のドア",
-  "玄関の下駄箱",
-  "寝室のベッド下",
-  "書斎の机"
-];
-
-let hasPlayedToday = false;
-
-// HTML要素を取得
-const rollButton = document.getElementById("rollButton");
-const resultText = document.getElementById("result");
-const slot = document.getElementById("slot1");
-const resultContainer = document.getElementById("result-container");
-
-// Anime.jsを使用したスロット回転アニメーション
-function rollSlots() {
-  if (hasPlayedToday) {
-    alert("本日はすでにガチャを回しています！また明日挑戦してください！");
-    return;
-  }
-
-  // スロットを回転中に設定
-  slot.textContent = "回転中...";
-  anime({
-    targets: slot,
-    rotate: [0, 360],
-    scale: [1, 1.5, 1],
-    duration: 2000,
-    easing: "easeInOutQuad",
-    complete: function () {
-      // 回転後にランダムな結果を表示
-      const slotResult = getRandomItem(locations);
-      slot.textContent = slotResult;
-
-      // 結果表示アニメーション
-      anime({
-        targets: slot,
-        scale: [1, 1.2, 1],
-        duration: 500,
-        easing: "easeInOutQuad"
-      });
-
-      hasPlayedToday = true;
-      resultText.textContent = `今日の掃除ミッション：${slotResult}`;
-      resultContainer.classList.remove("hidden");
-    }
-  });
+/* 基本スタイル */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background: #000; /* 黒背景 */
+  color: white;
 }
 
-// ランダムな結果を取得
-function getRandomItem(array) {
-  return array[Math.floor(Math.random() * array.length)];
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #222, #555);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
-// Three.jsを使用した3D背景のセットアップ
-function setup3DScene() {
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
-
-  // 立方体を追加
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0xffcc00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-
-  // カメラの位置
-  camera.position.z = 5;
-
-  // アニメーション
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #ffcc00;
+  text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.8);
 }
 
-// ボタンのクリックイベントにアニメーションを紐づけ
-rollButton.addEventListener("click", rollSlots);
+p {
+  margin: 10px 0;
+}
 
-// ページ読み込み時に3Dシーンをセットアップ
-setup3DScene();
+.slot-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.slot {
+  width: 200px;
+  height: 100px;
+  background: linear-gradient(135deg, #444, #666);
+  border: 5px solid #ffcc00;
+  border-radius: 15px;
+  color: #ffcc00;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  animation: spin 0.5s linear infinite;
+}
+
+button {
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(255, 87, 51, 0.8);
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #c44127;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); background: #555; }
+  100% { transform: scale(1); }
+}
