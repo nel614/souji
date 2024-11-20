@@ -1,76 +1,58 @@
-/* 基本スタイル */
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: #000; /* 黒背景 */
-  color: white;
+// ガチャアイテムのリスト
+const items = [
+  { name: "ノーマルアイテム", rarity: "normal" },
+  { name: "レアアイテム", rarity: "rare" },
+  { name: "スーパーレアアイテム", rarity: "super_rare" },
+];
+
+let hasPlayedToday = false;
+
+// HTML要素を取得
+const rollButton = document.getElementById("rollButton");
+const resultText = document.getElementById("result");
+const slot = document.getElementById("slot1");
+const resultContainer = document.getElementById("result-container");
+
+// ガチャロジック
+function rollGacha() {
+  if (hasPlayedToday) {
+    alert("今日はもうガチャを回しています。また明日挑戦してください！");
+    return;
+  }
+
+  slot.textContent = "回転中...";
+  anime({
+    targets: slot,
+    rotate: [0, 360],
+    duration: 2000,
+    easing: "easeInOutQuad",
+    complete: function () {
+      const result = getRandomItem(items);
+      slot.textContent = result.name;
+
+      // レアリティに応じた演出
+      let color = "#fff";
+      if (result.rarity === "rare") color = "#00f";
+      else if (result.rarity === "super_rare") color = "#f00";
+
+      anime({
+        targets: "body",
+        backgroundColor: [color, "#000"],
+        duration: 800,
+        easing: "easeInOutQuad",
+      });
+
+      resultText.textContent = `結果: ${result.name} (${result.rarity})`;
+      resultContainer.classList.remove("hidden");
+      hasPlayedToday = true;
+    },
+  });
 }
 
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #222, #555);
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+// ランダムなアイテムを取得
+function getRandomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #ffcc00;
-  text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.8);
-}
-
-p {
-  margin: 10px 0;
-}
-
-.slot-container {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-.slot {
-  width: 200px;
-  height: 100px;
-  background: linear-gradient(135deg, #444, #666);
-  border: 5px solid #ffcc00;
-  border-radius: 15px;
-  color: #ffcc00;
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  animation: spin 0.5s linear infinite;
-}
-
-button {
-  background-color: #ff5733;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 1.2em;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(255, 87, 51, 0.8);
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #c44127;
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes spin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); background: #555; }
-  100% { transform: scale(1); }
-}
+// ボタンイベント
+rollButton.addEventListener("click", rollGacha);
