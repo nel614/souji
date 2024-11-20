@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ソシャゲ風ガチャ</title>
-
-  <!-- Anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <title>おしゃれなガチャ</title>
   <!-- スタイルシート -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>ソシャゲ風ガチャ</h1>
-    <p>ガチャを回してアイテムをゲットしよう！</p>
+    <h1>ガチャでポイントをためよう！</h1>
+    <p>1日1回のガチャでポイントを獲得！スタンプをためて商品と交換しよう。</p>
 
     <!-- ガチャスロット -->
     <div class="slot-container">
@@ -29,9 +24,19 @@
     <div id="result-container" class="hidden">
       <p id="result"></p>
     </div>
+
+    <!-- スタンプカード -->
+    <div class="stamp-card">
+      <h2>スタンプカード</h2>
+      <div id="stamps" class="stamps"></div>
+      <p>現在の合計ポイント: <span id="totalPoints">0</span>ポイント</p>
+    </div>
+
+    <!-- インスタグラム認証 -->
+    <button id="loginButton">Instagramでログイン</button>
   </div>
 
-  <!-- 自作スクリプト -->
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
