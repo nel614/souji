@@ -1,3 +1,4 @@
+/* 基本設定 */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -7,6 +8,7 @@ body {
   color: #333;
 }
 
+/* 全体のコンテナ */
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -16,11 +18,13 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* 見出し */
 h1 {
   font-size: 2em;
   color: #ff6f61;
 }
 
+/* ボタンのスタイル */
 button {
   background-color: #ff6f61;
   color: white;
@@ -29,12 +33,14 @@ button {
   padding: 10px 20px;
   font-size: 1.2em;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
   background-color: #e65548;
 }
 
+/* ガチャスロット */
 .slot-container {
   display: flex;
   justify-content: center;
@@ -55,15 +61,7 @@ button:hover {
   color: #ff6f61;
 }
 
-.spinning {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+/* スタンプカード */
 .stamp-card {
   margin-top: 20px;
   padding: 15px;
@@ -86,4 +84,14 @@ button:hover {
   background: #ff9a9e;
   margin: 5px;
   display: inline-block;
+}
+
+/* スロットの回転アニメーション */
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
