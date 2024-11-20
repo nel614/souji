@@ -1,72 +1,80 @@
-/* 基本スタイル */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: #000;
-  color: white;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: #333;
 }
 
 .container {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
-  background: linear-gradient(135deg, #222, #555);
+  background: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #ffcc00;
-  text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.8);
+  font-size: 2em;
+  color: #ff6f61;
+}
+
+button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e65548;
 }
 
 .slot-container {
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .slot {
-  width: 200px;
+  width: 150px;
   height: 100px;
-  background: linear-gradient(135deg, #444, #666);
-  border: 5px solid #ffcc00;
-  border-radius: 15px;
-  color: #ffcc00;
-  font-size: 2em;
+  background: #ffeedb;
+  border: 3px solid #ff6f61;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  animation: spin 0.5s linear infinite;
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff6f61;
 }
 
-button {
-  background-color: #ff5733;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 1.2em;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(255, 87, 51, 0.8);
-  transition: 0.3s;
+.stamp-card {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff7f3;
+  border: 2px solid #ff6f61;
+  border-radius: 10px;
 }
 
-button:hover {
-  background-color: #c44127;
+.stamps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.hidden {
-  display: none;
-}
-
-@keyframes spin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); background: #555; }
-  100% { transform: scale(1); }
+.stamp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff9a9e;
+  margin: 5px;
+  display: inline-block;
 }
