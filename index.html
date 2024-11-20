@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>掃除ミッション - ガチャ演出</title>
+  <title>ソシャゲ風ガチャ</title>
 
   <!-- Anime.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <!-- Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-
   <!-- スタイルシート -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>掃除ミッション</h1>
-    <p>ガチャを回して掃除ミッションを決めよう！</p>
-    
+    <h1>ソシャゲ風ガチャ</h1>
+    <p>ガチャを回してアイテムをゲットしよう！</p>
+
     <div class="slot-container">
-      <div class="slot" id="slot1">?</div>
+      <div class="slot spinning" id="slot1">?</div>
     </div>
-    
+
     <button id="rollButton">ガチャを回す！</button>
-    
+
     <div id="result-container" class="hidden">
       <p id="result"></p>
     </div>
